@@ -25,6 +25,12 @@ public class BoardController implements BoardUI {
     public AnchorPane root;
     public Pane pneOver;
     public JFXButton btnPlayAgain;
+    public VBox col1;
+    public VBox col2;
+    public VBox col3;
+    public VBox col4;
+    public VBox col5;
+    public VBox col0;
 
     private String playerName;
     private boolean isAiPlaying;
