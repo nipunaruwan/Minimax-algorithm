@@ -1,7 +1,7 @@
 package lk.ijse.dep.service;
 
 
-public class Winner<Piece> {
+public class Winner {
    private Piece winningPiece;
     private static final int NUM_OF_COLS = 8;
     private static final int NUM_OF_ROWS = 8;

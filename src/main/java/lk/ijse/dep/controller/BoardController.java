@@ -106,16 +106,16 @@ public class BoardController implements BoardUI {
         lblStatus.getStyleClass().clear();
         lblStatus.getStyleClass().add("final");
         switch (winner.getWinningPiece()) {
-            case BLUE:
+            case Blue:
                 lblStatus.setText(String.format("%s, you have won the game !", playerName));
                 break;
-            case GREEN:
+            case Green:
                 lblStatus.setText("Game is over, AI has won the game !");
                 break;
-            case EMPTY:
+            case EmpTy:
                 lblStatus.setText("Game is tied !");
         }
-        if (winner.getWinningPiece() != Piece.EMPTY) {
+        if (winner.getWinningPiece() != Piece.EmpTy) {
             VBox vCol = (VBox) grpCols.lookup("#col" + winner.getCol1());
             Rectangle rect = new Rectangle((winner.getCol2() - winner.getCol1() + 1) * vCol.getWidth(),
                     (winner.getRow2() - winner.getRow1() + 1) * (((RADIUS + 2) * 2)));
