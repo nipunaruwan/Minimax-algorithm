@@ -25,7 +25,7 @@ public class BoardImpl implements Board{
 
     @Override
     public int findNextAvailableSpot(int col) {
-        return -1;
+return 1;
     }
 
     @Override

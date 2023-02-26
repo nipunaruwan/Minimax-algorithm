@@ -3,28 +3,29 @@ package lk.ijse.dep.service;
 
 public class Winner {
    private Piece winningPiece;
-    private static final int NUM_OF_COLS = 8;
-    private static final int NUM_OF_ROWS = 8;
-    private Piece[][] pieces;
+
     private int col1;
     private int row1;
     private int col2;
-
-
-
     private int row2;
 
     public Winner(Piece winningPiece) {
-        this.setPieces(new Piece[getNumOfCols()][getNumOfRows()]);
+        this.winningPiece = winningPiece;
+        this.col1=-1;
+        this.row1=-1;
+        this.col2=-1;
+        this.row2=-1;
     }
 
-    public static int getNumOfCols() {
-        return NUM_OF_COLS;
+    public Winner(Piece winningPiece, int col1, int row1, int col2, int row2) {
+        this.winningPiece = winningPiece;
+        this.col1 = col1;
+        this.row1 = row1;
+        this.col2 = col2;
+        this.row2 = row2;
     }
 
-    public static int getNumOfRows() {
-        return NUM_OF_ROWS;
-    }
+
 
     public Piece getWinningPiece() {
         return winningPiece;
@@ -34,13 +35,9 @@ public class Winner {
         this.winningPiece = winningPiece;
     }
 
-    public Piece[][] getPieces() {
-        return pieces;
-    }
 
-    public void setPieces(Piece[][] pieces) {
-        this.pieces = pieces;
-    }
+
+
 
     public int getCol1() {
         return col1;
