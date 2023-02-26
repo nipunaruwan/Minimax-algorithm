@@ -1,8 +1,7 @@
 package lk.ijse.dep.service;
 
 public class BoardImpl implements Board{
-    private static final int NUM_OF_COLS = 6;
-    private static final int NUM_OF_ROWS = 5;
+
     private final BoardUI boardUI;
     private final Piece[][] pieces;
 
