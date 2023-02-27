@@ -12,7 +12,7 @@ public class BoardImpl implements Board{
 
         for(int col=0; col<NUM_OF_COLS;col++){
             for(int row=0;row<NUM_OF_ROWS;row++){
-                pieces[col][row]=Piece.EMPTY;
+                pieces[row][col]=Piece.EMPTY;
 
             }
         }
@@ -25,26 +25,69 @@ public class BoardImpl implements Board{
 
     @Override
     public int findNextAvailableSpot(int col) {
-return 1;
+for(int i=0;i<NUM_OF_ROWS;i++){
+    if(pieces[col][i]==Piece.EMPTY){
+        return i;
+    }
+}
+return -1;
     }
 
     @Override
     public boolean isLegalMove(int col) {
-        return false;
+        return findNextAvailableSpot(col) > -1;
     }
 
     @Override
     public boolean existLegalMoves() {
-        return false;
+     for (int i=0; i<NUM_OF_COLS;i++){
+         if (findNextAvailableSpot(i)>-1){
+             return true;
+         }
+
+     }
+     return false;
     }
 
     @Override
     public void updateMove(int col, Piece move) {
+        int nextAvailableSpot = findNextAvailableSpot(col);
+        if (nextAvailableSpot != -1) {
+            pieces[col][nextAvailableSpot] = move;
+        }
 
     }
-
     @Override
+    public void updateMove(int col, int row ,Piece move) {
+        pieces[col][row]=move;
+        }
+
+
+   // @Override
     public Winner findWinner() {
-        return null;
+
+        for (int row = 0; row < NUM_OF_ROWS; row++) {
+            for (int col = 0; col < NUM_OF_COLS - 3; col++) {
+                Piece current = pieces[col][row];
+                if (current != Piece.EMPTY && current == pieces[col + 1][row] && current == pieces[col + 2][row] && current == pieces[col + 3][row]) {
+                    return new Winner(current, col, row, col + 3, row);
+                }
+            }
+        }
+
+// Check vertically
+        for (int col = 0; col < NUM_OF_COLS; col++) {
+            for (int row = 0; row < NUM_OF_ROWS - 3; row++) {
+                Piece current = pieces[col][row];
+                if (current != Piece.EMPTY && current == pieces[col][row + 1] && current == pieces[col][row + 2] && current == pieces[col][row + 3]) {
+                    return new Winner(current, col, row, col, row + 3);
+                }
+            }
+        }
+
+// No winner found
+        return new Winner(Piece.EMPTY);
     }
+
+
 }
